@@ -179,7 +179,7 @@ public class Solver {
         solActual = copiarMatriz(mejorSol);
 
         //Se repite hasta que encuentra el mejor o cumple la condicion de paro
-        while ((criterioParo != condicionParo && bandera == true)) {
+        while ((criterioParo != condicionParo && bandera)) {
             solAux = copiarMatriz(solActual);
 
             solNueva = vecindario(solAux, vecindario); //Se genera una nueva solucion
@@ -214,39 +214,38 @@ public class Solver {
     // 3- Se hace la permutacion de a subseccion segun el tipo de vecindad (A o B) descrita por shuffleMatrix();
     // 4- Regresa la matriz con la subseccion ya modificada
     private int[][] vecindario(int[][] solucion, String vecindario) {
-        int[][] aux = solucion;
         int sub = rd.nextIntAcotado(1, 9);
         // System.out.println("Se modifica " + sub);
         switch (sub) {
             case 1:
-                subSeccionVecindarios(aux, 0, 0, vecindario);
+                subSeccionVecindarios(solucion, 0, 0, vecindario);
                 break;
             case 2:
-                subSeccionVecindarios(aux, 0, 3, vecindario);
+                subSeccionVecindarios(solucion, 0, 3, vecindario);
                 break;
             case 3:
-                subSeccionVecindarios(aux, 0, 6, vecindario);
+                subSeccionVecindarios(solucion, 0, 6, vecindario);
                 break;
             case 4:
-                subSeccionVecindarios(aux, 3, 0, vecindario);
+                subSeccionVecindarios(solucion, 3, 0, vecindario);
                 break;
             case 5:
-                subSeccionVecindarios(aux, 3, 3, vecindario);
+                subSeccionVecindarios(solucion, 3, 3, vecindario);
                 break;
             case 6:
-                subSeccionVecindarios(aux, 3, 6, vecindario);
+                subSeccionVecindarios(solucion, 3, 6, vecindario);
                 break;
             case 7:
-                subSeccionVecindarios(aux, 6, 0, vecindario);
+                subSeccionVecindarios(solucion, 6, 0, vecindario);
                 break;
             case 8:
-                subSeccionVecindarios(aux, 6, 3, vecindario);
+                subSeccionVecindarios(solucion, 6, 3, vecindario);
                 break;
             case 9:
-                subSeccionVecindarios(aux, 6, 6, vecindario);
+                subSeccionVecindarios(solucion, 6, 6, vecindario);
                 break;
         }
-        return aux;
+        return solucion;
     }
 
     private void subSeccionVecindarios(int[][] sol, int row, int column, String vecindario) {
